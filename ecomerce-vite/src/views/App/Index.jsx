@@ -1,12 +1,13 @@
-import {BrowserRouter, useRouter} from "react-router-dom"
+import {BrowserRouter, useRoutes} from "react-router-dom"
 import Home from "../Home/Index"
 import MyAccount from "../MyAccount/Index"
 import MyOrder from "../MyOrder/Index"
 import NotFound from "../NotFound/Index"
 import SingIn from "../SingIn/Index"
+import Navbar from "../../components/Navbar/index.jsx"
 
 const AppRoutes = ()=>{
-  let routes = useRouter(
+  let routes = useRoutes(
     [
     {
       path:"/",
@@ -37,6 +38,7 @@ function App() {
  
   return (
     <BrowserRouter>
+      <Navbar/>
       <AppRoutes/>
     </BrowserRouter>
   )
