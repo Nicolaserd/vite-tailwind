@@ -1,9 +1,9 @@
-
+import Layout from "../../components/Layout"
 function Home() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-300">
+    <Layout >
       Home
-    </h1>
+    </Layout>
   )
 
 }

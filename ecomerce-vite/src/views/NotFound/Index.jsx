@@ -1,9 +1,10 @@
+import Layout from "../../components/Layout"
 
 function NotFound() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-300">
+    <Layout >
       NotFound
-    </h1>
+    </Layout>
   )
 
 }
