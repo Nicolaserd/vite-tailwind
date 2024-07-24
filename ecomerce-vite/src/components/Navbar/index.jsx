@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import Toggle from "./Buttons"
 import { useEffect, useState } from "react"
+import{ShoppingCartIcon} from '@heroicons/react/24/solid'
 
 const Navbar = ()=>{
     const[isToggled,setIsToggled]=useState(false)
@@ -23,7 +24,7 @@ const Navbar = ()=>{
     const activeStyle ="underline underline-offset-4"
 
     return(
-        <nav className=" flex p-4 justify-between items-center text-gray-800 w-full text-xl bg-slate-300 dark:bg-slate-600 dark:text-gray-400">
+        <nav className=" flex p-4 justify-between items-center text-gray-800 w-full text-xl bg-slate-300 dark:bg-slate-600 dark:text-gray-400 fixed top-0 z-30">
         <ul className="flex w-auto space-x-5">
             <li>
                 <NavLink to="/" 
@@ -83,6 +84,10 @@ const Navbar = ()=>{
                 toggle ={isToggled} 
                />
 
+           
+            </li>
+            <li>
+              <ShoppingCartIcon/>
            
             </li>
 
