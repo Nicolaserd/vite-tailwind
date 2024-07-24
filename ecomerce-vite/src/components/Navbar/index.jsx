@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom"
 import Toggle from "./Buttons"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import{ShoppingCartIcon} from '@heroicons/react/24/solid'
+import { ShopingCartContext } from "../../context"
 
 const Navbar = ()=>{
+    const context = useContext(ShopingCartContext)
     const[isToggled,setIsToggled]=useState(false)
     const toggled = () => {
         setIsToggled(prev => !prev);
@@ -86,8 +88,9 @@ const Navbar = ()=>{
 
            
             </li>
-            <li>
-              <ShoppingCartIcon/>
+            <li className="flex items-center gap-3 justify-center">
+              <ShoppingCartIcon className="w-6 h-6 self-center justify-self-center text-gray-500 cursor-pointer dark:text-white"/>
+              {context.count}
            
             </li>
 
