@@ -1,18 +1,24 @@
 import { NavLink } from "react-router-dom"
 import Toggle from "./Buttons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Navbar = ()=>{
     const[isToggled,setIsToggled]=useState(false)
-    const toggled = ()=>{
-        setIsToggled(!isToggled)
+    const toggled = () => {
+        setIsToggled(prev => !prev);
+    };
+
+    useEffect(() => {
         if (isToggled) {
             document.documentElement.classList.add('dark');
+            document.body.classList.add('bg-gray-800');
+            document.body.classList.remove('bg-white');
         } else {
             document.documentElement.classList.remove('dark');
+            document.body.classList.add('bg-white');
+            document.body.classList.remove('bg-gray-800');
         }
-        
-    }
+    }, [isToggled]);
 
     const activeStyle ="underline underline-offset-4"
 

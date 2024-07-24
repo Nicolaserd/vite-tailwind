@@ -5,6 +5,7 @@ import MyOrder from "../MyOrder/Index"
 import NotFound from "../NotFound/Index"
 import SingIn from "../SingIn/Index"
 import Navbar from "../../components/Navbar/index.jsx"
+import { ShopingCarProvider } from "../../context/index.jsx"
 
 const AppRoutes = ()=>{
   let routes = useRoutes(
@@ -37,10 +38,12 @@ const AppRoutes = ()=>{
 function App() {
  
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <AppRoutes/>
-    </BrowserRouter>
+    <ShopingCarProvider>
+      <BrowserRouter >
+        <Navbar/>
+        <AppRoutes/>
+      </BrowserRouter>
+    </ShopingCarProvider>
   )
 
 }
