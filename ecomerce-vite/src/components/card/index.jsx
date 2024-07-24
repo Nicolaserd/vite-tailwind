@@ -27,10 +27,15 @@ const Card = ({data})=>{
     }
    
    const context = useContext(ShopingCartContext)
+
+   const showProduct = (ProductDetail) =>{
+        context.openProductDetail()
+        context.setProductToShow(ProductDetail)
+   }
    return(
         <div 
         className="bg-transparent cursor-pointer w-56 h-60"
-        onClick={()=>context.openProductDetail()}
+        onClick={()=>showProduct(data)}
         >
             <figure className="relative mb-4 w-full h-4/5">
                 <span className="absolute bottom-1 left-1  rounded-2xl bg-white/60 text-black text-sm p-2 font-semibold dark:text-white dark:bg-black/60">{data?.category?.name} </span>
