@@ -88,7 +88,7 @@ const Navbar = ()=>{
 
            
             </li>
-            <li className="flex items-center gap-3 justify-center">
+            <li className="flex items-center gap-3 justify-center dark:text-white">
               <ShoppingCartIcon className="w-6 h-6 self-center justify-self-center text-gray-500 cursor-pointer dark:text-white"/>
               {context.count}
            

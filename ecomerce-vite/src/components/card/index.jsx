@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ShopingCartContext, ShopingCartProvider } from "../../context"
+import { ShopingCartContext } from "../../context"
 
 
 const Card = ({data})=>{
@@ -26,14 +26,17 @@ const Card = ({data})=>{
         return null; 
     }
    
-   const {count,setCount} = useContext(ShopingCartContext)
+   const context = useContext(ShopingCartContext)
    return(
-        <div className="bg-transparent cursor-pointer w-56 h-60">
+        <div 
+        className="bg-transparent cursor-pointer w-56 h-60"
+        onClick={()=>context.openProductDetail()}
+        >
             <figure className="relative mb-4 w-full h-4/5">
                 <span className="absolute bottom-1 left-1  rounded-2xl bg-white/60 text-black text-sm p-2 font-semibold dark:text-white dark:bg-black/60">{data?.category?.name} </span>
                 <img className="w-full h-full object-cover rounded-lg" src={parsed()} alt={data?.title} />
                 <div className="absolute top-1 right-1 flex justify-center items-center bg-white w-6 h-6 rounded-full dark:bg-gray-900 dark:text-white"
-                    onClick={() => setCount(count + 1)}
+                    onClick={() => context.setCount(context.count + 1)}
                 >
                     +
                 </div>       
