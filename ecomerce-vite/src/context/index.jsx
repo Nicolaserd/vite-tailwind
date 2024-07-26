@@ -14,7 +14,7 @@ export const ShopingCartProvider = ({children}) =>{
     const [productToShow, setProductToShow] = useState({})
 
     //shoppingcart ADD products to cart
-    const [cartProducts, serCartProducts]= useState({})
+    const [cartProducts, setCartProducts]= useState([])
 
     const openProductDetail = () =>{
         return(setIsProductDetailOpen(true))
@@ -34,7 +34,7 @@ export const ShopingCartProvider = ({children}) =>{
                 productToShow,
                 setProductToShow,
                 cartProducts,
-                serCartProducts
+                setCartProducts
             }
 
         }>

@@ -9,22 +9,7 @@ const ProductDetail = ()=>{
         context=null
     }
     
-    const parsed= ()=>{
-        if (context.productToShow){
-            try{
-                const parsedImages = JSON.parse(context.productToShow.images[0])
-                return(parsedImages[0])
-            }
-            catch{
-                return(null)
-            }
-            
-        }
-        else{
-            return(null)
-        }
-       
-    }
+   
     return(
         <aside 
         className={`${context.isProductDetailOpen?"flex":"hidden"} product-detail flex-col fixed bg-white right-0 border border-black rounded-lg dark:bg-gray-700 dark:border-white`}
@@ -41,7 +26,7 @@ const ProductDetail = ()=>{
                 <figure className="px-6">
                     <img 
                     className=" w-full h-full rounded-lg"
-                    src={parsed()} alt={context.productToShow.title}
+                    src={context.productToShow.images} alt={context.productToShow.title}
                     />
                 </figure>
                 <p className="flex flex-col p-6">
