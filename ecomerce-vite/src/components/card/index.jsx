@@ -33,7 +33,7 @@ const Card = ({data})=>{
     context.setCartProducts([...context.cartProducts,productData])
     context.openCheckOut()
     context.closeProductDetail()
-    console.log(context.cartProducts)
+   
    }
 
    
