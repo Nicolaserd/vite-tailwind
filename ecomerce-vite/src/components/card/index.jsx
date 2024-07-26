@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ShopingCartContext } from "../../context"
+import {CheckIcon, PlusIcon} from '@heroicons/react/24/solid'
 
 
 const Card = ({data})=>{
@@ -35,6 +36,34 @@ const Card = ({data})=>{
     context.closeProductDetail()
    
    }
+   const renderIcon = (id)=>{
+    const isInCart = context.cartProducts.filter(product=>product.id===id).length > 0
+    if(isInCart){
+        return(
+            <div className="absolute top-1 right-1 flex justify-center items-center bg-white w-6 h-6 rounded-full dark:bg-gray-900 dark:text-white"
+           
+            >
+                <CheckIcon
+                    className="h-4 w-4 text-green-700"
+                />
+
+            </div>
+
+        )
+    }
+    else{
+        return(
+            <div className="absolute top-1 right-1 flex justify-center items-center bg-white w-6 h-6 rounded-full dark:bg-gray-900 dark:text-white"
+            onClick={(event)=>addProductsToCart(event,data)}
+            >
+                <PlusIcon
+                    className="h-4 w-4 "
+                />
+            </div>   
+        )
+
+    }
+   }
 
    
    return(
@@ -45,11 +74,12 @@ const Card = ({data})=>{
             <figure className="relative mb-4 w-full h-4/5">
                 <span className="absolute bottom-1 left-1  rounded-2xl bg-white/60 text-black text-sm p-2 font-semibold dark:text-white dark:bg-black/60">{data?.category?.name} </span>
                 <img className="w-full h-full object-cover rounded-lg" src={img()} alt={data?.title} />
-                <div className="absolute top-1 right-1 flex justify-center items-center bg-white w-6 h-6 rounded-full dark:bg-gray-900 dark:text-white"
-                    onClick={(event)=>addProductsToCart(event,data)}
-                >
-                    +
-                </div>       
+               
+                    {
+                        renderIcon(data.id)
+                    }
+                   
+                  
             </figure>
             <p className="flex justify-between">
                 <span className="text-sm font-light dark:text-white">{data?.title}</span>
