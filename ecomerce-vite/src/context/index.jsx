@@ -9,19 +9,31 @@ export const ShopingCartProvider = ({children}) =>{
 
     // Product detail show product open close
     const [isProductDetailOpen,setIsProductDetailOpen] = useState(false)
-
-    //Product detail
-    const [productToShow, setProductToShow] = useState({})
-
-    //shoppingcart ADD products to cart
-    const [cartProducts, setCartProducts]= useState([])
-
+    
     const openProductDetail = () =>{
         return(setIsProductDetailOpen(true))
     }
     const closeProductDetail = () =>{
         return(setIsProductDetailOpen(false))
     }
+    //Product detail
+    const [productToShow, setProductToShow] = useState({})
+    
+    // check out side menu show product open close
+    const [isCeckOutOpen,setIsCheckOutOpen] = useState(false)
+    
+    const openCheckOut = () =>{
+        return(setIsCheckOutOpen(true))
+    }
+    const closeCheckOut = () =>{
+        return(setIsCheckOutOpen(false))
+    }
+    
+ 
+
+    //shoppingcart ADD products to cart
+    const [cartProducts, setCartProducts]= useState([])
+
 
     return(
         <ShopingCartContext.Provider value={
@@ -34,7 +46,10 @@ export const ShopingCartProvider = ({children}) =>{
                 productToShow,
                 setProductToShow,
                 cartProducts,
-                setCartProducts
+                setCartProducts,
+                isCeckOutOpen,
+                openCheckOut,
+                closeCheckOut
             }
 
         }>
