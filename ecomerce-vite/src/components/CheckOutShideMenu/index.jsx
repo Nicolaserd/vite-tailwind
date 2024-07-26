@@ -3,7 +3,10 @@ import "./styles.css"
 import{XMarkIcon} from '@heroicons/react/24/solid'
 import { ShopingCartContext } from "../../context"
 import OrderCard from "../OrderCard"
+import { sumaProductos } from "../../utils"
+
 const CheckOutShideMenu = ()=>{
+
     let context = useContext(ShopingCartContext)
     const handleDelete = (id) =>{
         const newProducts = context.cartProducts.filter(product=>product.id !== id)
@@ -38,6 +41,13 @@ const CheckOutShideMenu = ()=>{
                     />
                 ))
             }
+
+            </div>
+            <div className="px-6 ">
+                <p className="flex justify-between items-center">
+                    <span className="font-light dark:text-gray-400">Total</span>
+                    <span className="font-medium text-2xl text-white">${sumaProductos(context.cartProducts)}</span>
+                </p>
 
             </div>
                 
