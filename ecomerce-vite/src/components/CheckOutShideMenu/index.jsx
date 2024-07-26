@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import {Link} from "react-router-dom"
 import "./styles.css"
 import{XMarkIcon} from '@heroicons/react/24/solid'
 import { ShopingCartContext } from "../../context"
@@ -59,13 +60,15 @@ const CheckOutShideMenu = ()=>{
                     <span className="font-light dark:text-gray-400">Total</span>
                     <span className="font-medium text-2xl text-white">${sumaProductos(context.cartProducts)}</span>
                 </p>
-                <button
-                className="bg-black py-3 text-white w-full rounded-lg"
-                onClick={()=>handleCheckout()}
+                <Link to="/MyOrder/last">
+                    <button
+                    className="bg-black py-3 text-white w-full rounded-lg"
+                    onClick={()=>handleCheckout()}
 
-                >
-                    Checkout
-                </button>
+                    >
+                        Checkout
+                    </button>
+                </Link>
             </div>
                 
         </aside>

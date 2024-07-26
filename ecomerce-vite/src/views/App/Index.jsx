@@ -24,6 +24,10 @@ const AppRoutes = ()=>{
       element:<MyOrder/>
     },
     {
+      path:"/MyOrder/last",
+      element:<MyOrder/>
+    },
+    {
       path:"/NotFound",
       element:<NotFound/>
     },
