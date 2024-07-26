@@ -30,12 +30,13 @@ const Card = ({data})=>{
    }
    const addProductsToCart = (event,productData)=>{
     event.stopPropagation()
+    context.closeProductDetail()
     context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts,productData])
     context.openCheckOut()
-    context.closeProductDetail()
-   
+  
    }
+   
    const renderIcon = (id)=>{
     const isInCart = context.cartProducts.filter(product=>product.id===id).length > 0
     if(isInCart){

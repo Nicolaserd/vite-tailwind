@@ -7,6 +7,7 @@ import SingIn from "../SingIn/Index"
 import Navbar from "../../components/Navbar/index.jsx"
 import { ShopingCartProvider } from "../../context/index.jsx"
 import CheckOutShideMenu from "../../components/CheckOutShideMenu/index.jsx"
+import MyOrders from "../MyOrders/index.jsx"
 
 const AppRoutes = ()=>{
   let routes = useRoutes(
@@ -24,11 +25,19 @@ const AppRoutes = ()=>{
       element:<MyOrder/>
     },
     {
-      path:"/MyOrder/last",
+      path:"/MyOrders/last",
       element:<MyOrder/>
     },
     {
-      path:"/NotFound",
+      path:"/MyOrders/:id",
+      element:<MyOrder/>
+    },
+    {
+      path:"/MyOrders",
+      element:<MyOrders/>
+    },
+    {
+      path:"/*",
       element:<NotFound/>
     },
     {

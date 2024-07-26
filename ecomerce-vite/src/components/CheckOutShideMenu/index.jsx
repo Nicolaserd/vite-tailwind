@@ -57,10 +57,10 @@ const CheckOutShideMenu = ()=>{
             </div>
             <div className="px-6 mb-6 ">
                 <p className="flex justify-between items-center mb-2">
-                    <span className="font-light dark:text-gray-400">Total</span>
-                    <span className="font-medium text-2xl text-white">${sumaProductos(context.cartProducts)}</span>
+                    <span className="font-medium dark:text-gray-400">Total</span>
+                    <span className="font-semibold text-2xl text-black dark:text-white">${sumaProductos(context.cartProducts)}</span>
                 </p>
-                <Link to="/MyOrder/last">
+                <Link to="/MyOrders/last">
                     <button
                     className="bg-black py-3 text-white w-full rounded-lg"
                     onClick={()=>handleCheckout()}

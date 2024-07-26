@@ -56,7 +56,7 @@ const Navbar = ()=>{
 
         <ul className="flex w-auto space-x-5">
             <li>
-                <NavLink to="/MyOrder"
+                <NavLink to="/MyOrders"
                  className={({ isActive }) => 
                     ` ${isActive ? activeStyle : ''} `}
                 >
@@ -88,9 +88,11 @@ const Navbar = ()=>{
 
            
             </li>
-            <li className="flex items-center gap-3 justify-center dark:text-white">
+            <li className="flex items-center gap-3 justify-center dark:text-white relative">
               <ShoppingCartIcon className="w-6 h-6 self-center justify-self-center text-gray-500 cursor-pointer dark:text-white"/>
-              {context.count}
+              <span className={`flex absolute left-4 -top-2 bg-gray-400 text-green-700 font-semibold text-sm rounded-full w-4 h-4 justify-center items-center ${context.count===0?"hidden":"flex"} dark:text-white`}>
+                {context.count}
+              </span>
            
             </li>
 
