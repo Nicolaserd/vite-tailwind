@@ -5,8 +5,11 @@ import { ShopingCartContext } from "../../context"
 import OrderCard from "../OrderCard"
 const CheckOutShideMenu = ()=>{
     let context = useContext(ShopingCartContext)
+    const handleDelete = (id) =>{
+        const newProducts = context.cartProducts.filter(product=>product.id !== id)
+        context.setCartProducts(newProducts)
+    }
     
-    console.log(context.cartProducts)
     return(
         <aside 
         className={`${context.isCeckOutOpen?"flex":"hidden"} check-out-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg z-40 dark:bg-gray-700 dark:border-white`}
@@ -25,10 +28,12 @@ const CheckOutShideMenu = ()=>{
             {
                 context.cartProducts.map(product=>(
                     <OrderCard
+                        id={product.id}
                         key={product.id}
                         title={product.title}
                         imageUrl={product.images}
                         price={product.price}
+                        handleDelete={handleDelete}
 
                     />
                 ))
