@@ -13,6 +13,9 @@ export const ShopingCartProvider = ({children}) =>{
     //Product detail
     const [productToShow, setProductToShow] = useState({})
 
+    //shoppingcart ADD products to cart
+    const [cartProducts, serCartProducts]= useState({})
+
     const openProductDetail = () =>{
         return(setIsProductDetailOpen(true))
     }
@@ -29,7 +32,9 @@ export const ShopingCartProvider = ({children}) =>{
                 closeProductDetail,
                 isProductDetailOpen,
                 productToShow,
-                setProductToShow
+                setProductToShow,
+                cartProducts,
+                serCartProducts
             }
 
         }>
