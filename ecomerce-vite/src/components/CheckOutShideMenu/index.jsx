@@ -12,7 +12,18 @@ const CheckOutShideMenu = ()=>{
         const newProducts = context.cartProducts.filter(product=>product.id !== id)
         context.setCartProducts(newProducts)
     }
-    
+    const handleCheckout = ()=>{
+        
+        const orderToAdd = {
+            date: new Date(),
+            products:context.cartProducts,
+            totalProducts:context.cartProducts.length,
+            totalPrice: sumaProductos(context.cartProducts)
+        }
+
+        context.setOrder([...context.order,orderToAdd])
+        context.setCartProducts([])
+    }
     return(
         <aside 
         className={`${context.isCeckOutOpen?"flex":"hidden"} check-out-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg z-40 dark:bg-gray-700 dark:border-white`}
@@ -26,7 +37,7 @@ const CheckOutShideMenu = ()=>{
                 onClick={()=>context.closeCheckOut()}
                 />
             </div>
-            <div className="px-6 overflow-y-auto">
+            <div className="px-6 overflow-y-auto flex-1">
 
             {
                 context.cartProducts.map(product=>(
@@ -43,12 +54,18 @@ const CheckOutShideMenu = ()=>{
             }
 
             </div>
-            <div className="px-6 ">
-                <p className="flex justify-between items-center">
+            <div className="px-6 mb-6 ">
+                <p className="flex justify-between items-center mb-2">
                     <span className="font-light dark:text-gray-400">Total</span>
                     <span className="font-medium text-2xl text-white">${sumaProductos(context.cartProducts)}</span>
                 </p>
+                <button
+                className="bg-black py-3 text-white w-full rounded-lg"
+                onClick={()=>handleCheckout()}
 
+                >
+                    Checkout
+                </button>
             </div>
                 
         </aside>
