@@ -1,28 +1,57 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
 import Card from "../../components/card"
 import Layout from "../../components/Layout"
 import ProductDetail from "../../components/ProductDetail"
+import { ShopingCartContext } from "../../context"
 
 function Home() {
-  const [items,setItems]=useState(null)
-  useEffect(()=>{
-    fetch("https://api.escuelajs.co/api/v1/products")
-      .then(response=>response.json())
-      .then(data=>setItems(data))
-  },[])
-  return (
-    <Layout >
-      <h1 className="text-5xl font-bold dark:text-white mb-9"> 
-        Home
-      </h1>
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {
-          items?.map((item)=>(
+ 
+  let context = useContext(ShopingCartContext)
+
+  const renderView = ()=>{
+    if(context.searchByTitle?.length>0)
+    {
+      if(context.filteredItems?.length>0){
+        return(
+          context.filteredItems?.map((item)=>(
             <Card
             key={item.id}
             data={item}
             />
           ))
+        )
+      }
+      else{
+        
+        return (
+          <h1 className="text-5xl font-bold absolute top-1/2 right-1/2 dark:text-white mb-9 "> We don´t have anything :(</h1>
+        )
+      }
+    }
+    else{
+      return context.items?.map((item)=>(
+        <Card
+        key={item.id}
+        data={item}
+        />
+      ))
+    }
+  }
+
+  return (
+    <Layout >
+      <h1 className="text-5xl font-bold dark:text-white mb-9"> 
+        Home
+      </h1>
+      <input 
+        type="text" 
+        placeholder="Search a product"
+        className="rounded-lg border border-black  w-80 p-4 mb-4 focus:outline-none text-center dark:border-white dark:text-white dark:bg-gray-700"
+        onChange={(event)=>context.setSearchByTitle(event.target.value)}
+      />
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {
+          renderView()
         }
       </div>
       <ProductDetail/>
