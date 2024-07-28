@@ -9,8 +9,7 @@ function Home() {
   let context = useContext(ShopingCartContext)
 
   const renderView = ()=>{
-    if(context.searchByTitle?.length>0)
-    {
+    
       if(context.filteredItems?.length>0){
         return(
           context.filteredItems?.map((item)=>(
@@ -27,21 +26,13 @@ function Home() {
           <h1 className="text-5xl font-bold absolute top-1/2 right-1/2 dark:text-white mb-9 "> We don´t have anything :(</h1>
         )
       }
-    }
-    else{
-      return context.items?.map((item)=>(
-        <Card
-        key={item.id}
-        data={item}
-        />
-      ))
-    }
+    
   }
 
   return (
     <Layout >
       <h1 className="text-5xl font-bold dark:text-white mb-9"> 
-        Home
+        Products
       </h1>
       <input 
         type="text" 

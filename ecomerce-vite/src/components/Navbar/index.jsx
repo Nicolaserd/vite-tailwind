@@ -11,6 +11,13 @@ const Navbar = ()=>{
         setIsToggled(prev => !prev);
     };
 
+   
+    useEffect(() => {
+        const currentPath = window.location.pathname
+        let index = currentPath.substring(currentPath.lastIndexOf("/")+1)
+        context.setSearchByCategory(index)
+    }, []);
+
     useEffect(() => {
         if (isToggled) {
             document.documentElement.classList.add('dark');
@@ -37,19 +44,48 @@ const Navbar = ()=>{
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/"
+                <NavLink to="/all"
                  className={({ isActive }) => 
                     ` ${isActive ? activeStyle : ''} `}
+                 onClick={()=>context.setSearchByCategory()}
                 >
                     all
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/"
+                <NavLink to="/Furniture"
                  className={({ isActive }) => 
                     ` ${isActive ? activeStyle : ''} `}
+                 onClick={()=>context.setSearchByCategory("Furniture")}
                 >
-                    toys
+                    Furniture
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/Shoes"
+                 className={({ isActive }) => 
+                    ` ${isActive ? activeStyle : ''} `}
+                 onClick={()=>context.setSearchByCategory("Shoes")}
+                >
+                    Shoes
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/Miscellaneous"
+                 className={({ isActive }) => 
+                    ` ${isActive ? activeStyle : ''} `}
+                 onClick={()=>context.setSearchByCategory("Miscellaneous")}
+                >
+                    Miscellaneous
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/Electronics"
+                 className={({ isActive }) => 
+                    ` ${isActive ? activeStyle : ''} `}
+                 onClick={()=>context.setSearchByCategory("Electronics")}
+                >
+                    Electronics
                 </NavLink>
             </li>
         </ul>

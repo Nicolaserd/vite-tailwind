@@ -41,6 +41,8 @@ export const ShopingCartProvider = ({children}) =>{
     const [items,setItems]=useState(null)
 
     const [filteredItems,setFilteredItems]=useState(null)
+    
+    
 
     //Get produts by title
     const [searchByTitle,setSearchByTitle]=useState(null)
@@ -54,10 +56,50 @@ export const ShopingCartProvider = ({children}) =>{
     const filteredItmesByTitle = (items,filteredItems)=>{
         return items?.filter((item)=>item.title.toLowerCase().includes(filteredItems.toLowerCase()))
     }
+    //Get produts by CATEGORY
+    const [searchByCategory,setSearchByCategory]=useState(null)
+       
+    const filteredItmesByCategory = (items,searchByCategory)=>{
+       
+        return(
+            items?.filter((item)=>item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
+        ) 
+    }
 
+    const filterBy = (searchType,items,searchByTitle,searchByCategory) =>{
+        if(searchType==="BY_TITLE"){
+            return(
+                
+                filteredItmesByTitle(items,searchByTitle)
+            )
+        }
+        if(searchType==="BY_CATEGORY"){
+            
+            return(
+                filteredItmesByCategory(items,searchByCategory)
+            )
+        }
+        if(searchType==="BY_TITLE_AND_CATEGORY"){
+           
+            return(
+                filteredItmesByCategory(items,searchByCategory).filter(item=>item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+            )
+        }
+        if(!searchType){
+            return(
+                items
+            )
+        }
+
+    }
     useEffect(()=>{
-        if(searchByTitle) setFilteredItems(filteredItmesByTitle(items,searchByTitle))
-      },[items,searchByTitle])
+        if(searchByTitle && searchByCategory) setFilteredItems(filterBy("BY_TITLE_AND_CATEGORY",items,searchByTitle,searchByCategory))
+        if(searchByTitle && !searchByCategory) setFilteredItems(filterBy("BY_TITLE",items,searchByTitle,searchByCategory))
+        if(!searchByTitle && searchByCategory) setFilteredItems(filterBy("BY_CATEGORY",items,searchByTitle,searchByCategory))
+        if(!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null,items,searchByTitle,searchByCategory))
+      },[items,searchByTitle,searchByCategory])
+
+ 
 
 
     return(
@@ -82,6 +124,8 @@ export const ShopingCartProvider = ({children}) =>{
                 searchByTitle,
                 setSearchByTitle,
                 filteredItems,
+                searchByCategory,
+                setSearchByCategory,
             }
 
         }>
