@@ -28,7 +28,7 @@ const CheckOutShideMenu = ()=>{
     }
     return(
         <aside 
-        className={`${context.isCeckOutOpen?"flex":"hidden"} check-out-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg z-40 dark:bg-gray-700 dark:border-white`}
+        className={`${context.isCeckOutOpen?"flex":"hidden"} check-out-side-menu  flex-col fixed bg-white right-0 border border-black rounded-lg z-40 dark:bg-gray-700 dark:border-white max-md:w-60`}
 
         >
             <div className="flex justify-between items-start h-auto w-full p-3">

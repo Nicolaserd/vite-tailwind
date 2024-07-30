@@ -18,7 +18,7 @@ function MyOrder() {
         <h1 className="text-black font-bold text-3xl  dark:text-white">My Order</h1>
       </div>
     
-      <div className="overflow-y-auto flex flex-col w-80 ">
+      <div className="overflow-y-auto flex flex-col w-80 max-md:items-center max-md:w-72">
 
       {
           context.order?.[index]?.products.map(product=>(

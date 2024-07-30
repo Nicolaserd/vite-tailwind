@@ -12,7 +12,7 @@ const ProductDetail = ()=>{
    
     return(
         <aside 
-        className={`${context.isProductDetailOpen?"flex":"hidden"} product-detail flex-col fixed bg-white right-0 border border-black rounded-lg dark:bg-gray-700 dark:border-white`}
+        className={`${context.isProductDetailOpen?"flex":"hidden"} product-detail flex-col fixed bg-white right-0 border border-black rounded-lg dark:bg-gray-700 dark:border-white max-md:w-60`}
 
         >
             <div className="flex justify-between items-start h-auto w-full p-3">
@@ -29,7 +29,7 @@ const ProductDetail = ()=>{
                     src={context.productToShow.images} alt={context.productToShow.title}
                     />
                 </figure>
-                <p className="flex flex-col p-6">
+                <p className="flex flex-col p-6 overflow-auto">
                     <span className="dark:text-white">{context.productToShow.price}</span>
                     <span className="dark:text-white">{context.productToShow.title}</span>
                     <span className="dark:text-white">{context.productToShow.description}</span>
